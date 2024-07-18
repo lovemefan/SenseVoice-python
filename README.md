@@ -24,6 +24,7 @@ sensevoice/resource
 
 
 ```bash
+pip install -r requirements.txt
 export PYTHONPATH=$PWD:$PYTHONPATH
 python sensevoice/sense_voice.py --audio sensevoice/resource/asr_example_zh.wav 
 ```
