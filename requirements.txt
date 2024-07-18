@@ -1,0 +1,5 @@
+kaldi-native-fbank
+onnx==1.16.1
+onnxruntime==1.18.0
+sentencepiece==0.2.0
+soundfile==0.12.1
