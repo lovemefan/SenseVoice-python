@@ -16,26 +16,26 @@ if __name__ == "__main__":
     arg_parser.add_argument(
         "-e",
         "--embedding",
-        default="resource/embedding.npy",
+        default="sensevoice/resource/embedding.npy",
         type=str,
         help="Embedding",
     )
     arg_parser.add_argument(
         "-m",
         "--model",
-        default="resource/sense-voice-encoder.onnx",
+        default="sensevoice/resource/sense-voice-encoder.onnx",
         type=str,
         help="Model",
     )
     arg_parser.add_argument(
         "-b",
         "--bpe_model",
-        default="resource/chn_jpn_yue_eng_ko_spectok.bpe.model",
+        default="sensevoice/resource/chn_jpn_yue_eng_ko_spectok.bpe.model",
         type=str,
         help="BPE model",
     )
     arg_parser.add_argument(
-        "-c", "--cmvn_file", default="resource/am.mvn", type=str, help="cmvn file"
+        "-c", "--cmvn_file", default="sensevoice/resource/am.mvn", type=str, help="cmvn file"
     )
     arg_parser.add_argument("-d", "--device", default=-1, type=int, help="Device")
     arg_parser.add_argument(
