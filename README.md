@@ -29,9 +29,10 @@ export HF_ENDPOINT=https://hf-mirror.com
 ```
 
 * Windows Powershell
+
 ```bash
 $env:HF_ENDPOINT = "https://hf-mirror.com"
-* ```
+```
 
 或者非入侵方式使用环境变量
 ```bash
