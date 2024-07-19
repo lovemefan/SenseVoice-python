@@ -1,7 +1,13 @@
 ## SenseVoice-python with onnx
 
-[SenseVoice](https://github.com/FunAudioLLM/SenseVoice)是阿里开源的多语言asr.
+「简体中文」|「[English](./README-EN.md)」
 
+
+[SenseVoice](https://github.com/FunAudioLLM/SenseVoice)是具有音频理解能力的音频基础模型，
+包括语音识别（ASR）、语种识别（LID）、语音情感识别（SER）和声学事件分类（AEC）或声学事件检测（AED）。
+
+当前SenseVoice-small支持中、粤、英、日、韩语的多语言语音识别，情感识别和事件检测能力，具有极低的推理延迟。
+本项目提供python版的SenseVoice模型所需的onnx环境安装的与推理方式。
 
 
 ## 使用方式
