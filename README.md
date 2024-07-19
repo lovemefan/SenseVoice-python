@@ -62,12 +62,11 @@ optional arguments:
 
 
 ```bash
-2024-07-19 14:16:41,522 INFO [sense_voice_ort_session.py:130] Loading model from /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/embedding.npy
-2024-07-19 14:16:41,525 INFO [sense_voice_ort_session.py:133] Loading model /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx
-2024-07-19 14:16:43,994 INFO [sense_voice_ort_session.py:140] Loading /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/embedding.npy takes 2.47 seconds
-2024-07-19 14:16:44,031 INFO [sense_voice.py:76] Audio resource/asr_example_zh.wav is 5.58 seconds
-2024-07-19 14:16:44,253 INFO [sense_voice.py:81] <|zh|><|NEUTRAL|><|Speech|><|woitn|>欢迎大家来体验达摩院推出的语音识别模型
-2024-07-19 14:16:44,253 INFO [sense_voice.py:83] Decoder audio takes 0.22162580490112305 seconds
-2024-07-19 14:16:44,253 INFO [sense_voice.py:84] The RTF is 0.03971788618299696.
-
+2024-07-19 15:08:06,651 INFO [sense_voice_ort_session.py:130] Loading model from /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/embedding.npy
+2024-07-19 15:08:06,654 INFO [sense_voice_ort_session.py:133] Loading model /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx
+2024-07-19 15:08:08,773 INFO [sense_voice_ort_session.py:140] Loading /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx takes 2.12 seconds
+2024-07-19 15:08:08,802 INFO [sense_voice.py:76] Audio resource/asr_example_zh.wav is 5.58 seconds
+2024-07-19 15:08:09,007 INFO [sense_voice.py:81] <|zh|><|NEUTRAL|><|Speech|><|woitn|>欢迎大家来体验达摩院推出的语音识别模型
+2024-07-19 15:08:09,007 INFO [sense_voice.py:83] Decoder audio takes 0.20529699325561523 seconds
+2024-07-19 15:08:09,007 INFO [sense_voice.py:84] The RTF is 0.0367915758522608.
 ```
