@@ -80,6 +80,9 @@ class WavFrontend:
             always_2d=True,
             dtype="float32",
         )
+        assert (
+            sample_rate == 16000
+        ), f"Only 16000 Hz is supported, but got {sample_rate}Hz"
         self.sample_rate = sample_rate
         data = data[:, 0]  # use only the first channel
         samples = np.ascontiguousarray(data)

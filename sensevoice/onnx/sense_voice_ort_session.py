@@ -4,6 +4,7 @@
 # @Author    :lovemefan
 # @Email     :lovemefan@outlook.com
 import logging
+import time
 import warnings
 from pathlib import Path
 
@@ -130,10 +131,14 @@ class SenseVoiceInferenceSession:
 
         self.embedding = np.load(embedding_model_file)
         logging.info(f"Loading model {encoder_model_file}")
+        start = time.time()
         self.encoder = OrtInferRuntimeSession(
             encoder_model_file,
             device_id=device_id,
             intra_op_num_threads=intra_op_num_threads,
+        )
+        logging.info(
+            f"Loading {embedding_model_file} takes {time.time() - start:.2f} seconds"
         )
         self.blank_id = 0
         self.sp = spm.SentencePieceProcessor()
