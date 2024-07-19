@@ -31,4 +31,6 @@ jobs:
         pip install -U setuptools wheel
         pip3 install -e .
 
-    - name: sensevoice --audio sensevoice/resource/asr_example_zh.wav
+    - name: Test audio
+      run: |
+        sensevoice --audio sensevoice/resource/asr_example_zh.wav
