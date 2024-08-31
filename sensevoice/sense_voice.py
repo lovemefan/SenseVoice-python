@@ -8,10 +8,12 @@ import logging
 import os
 import time
 
+import soundfile as sf
 from huggingface_hub import snapshot_download
 
 from sensevoice.onnx.sense_voice_ort_session import SenseVoiceInferenceSession
 from sensevoice.utils.frontend import WavFrontend
+from sensevoice.utils.fsmn_vad import FSMNVad
 
 languages = {"auto": 0, "zh": 3, "en": 4, "yue": 7, "ja": 11, "ko": 12, "nospeech": 13}
 formatter = "%(asctime)s %(levelname)s [%(filename)s:%(lineno)d] %(message)s"
@@ -72,16 +74,28 @@ def main():
         args.device,
         args.num_threads,
     )
-    audio_input = front.get_features(args.audio_file)
-    logging.info(f"Audio {args.audio_file} is {0.06 * len(audio_input)} seconds")
-    start = time.time()
-    asr_result = model(
-        audio_input[None, ...], language=languages[args.language], use_itn=args.use_itn
+    waveform, _sample_rate = sf.read(
+        args.audio_file,
+        dtype="float32",
     )
-    logging.info(asr_result)
-    decoding_time = time.time() - start
+
+    logging.info(f"Audio {args.audio_file} is {len(waveform) / _sample_rate} seconds")
+    # load vad model
+    start = time.time()
+    vad = FSMNVad(download_model_path)
+    segments = vad.segments_offline(args.audio_file)
+    results = ""
+    for part in segments:
+        audio_feats = front.get_features(waveform[part[0] * 16 : part[1] * 16])
+        asr_result = model(
+            audio_feats[None, ...],
+            language=languages[args.language],
+            use_itn=args.use_itn,
+        )
+        logging.info(f"[{part[0] / 1000}s - {part[1] / 1000}s] {asr_result}")
+        decoding_time = time.time() - start
     logging.info(f"Decoder audio takes {decoding_time} seconds")
-    logging.info(f"The RTF is {decoding_time/(0.06 * len(audio_input))}.")
+    logging.info(f"The RTF is {decoding_time/(len(waveform) / _sample_rate)}.")
 
 
 if __name__ == "__main__":
