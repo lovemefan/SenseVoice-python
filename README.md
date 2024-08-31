@@ -27,7 +27,7 @@ sensevoice --audio sensevoice/resource/asr_example_zh.wav
 ```
 
 
-第一次使用会自动从huggingface下载，如果下载不下来，可以使用镜像
+第一次使用会自动从huggingface下载，如果下载不下来，可以使用hugginface代理
 
 * Linux:
 ```bash 
@@ -68,11 +68,11 @@ optional arguments:
 
 
 ```bash
-2024-07-19 15:08:06,651 INFO [sense_voice_ort_session.py:130] Loading model from /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/embedding.npy
-2024-07-19 15:08:06,654 INFO [sense_voice_ort_session.py:133] Loading model /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx
-2024-07-19 15:08:08,773 INFO [sense_voice_ort_session.py:140] Loading /Users/cenglingfan/Code/python-project/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx takes 2.12 seconds
-2024-07-19 15:08:08,802 INFO [sense_voice.py:76] Audio resource/asr_example_zh.wav is 5.58 seconds
-2024-07-19 15:08:09,007 INFO [sense_voice.py:81] <|zh|><|NEUTRAL|><|Speech|><|woitn|>欢迎大家来体验达摩院推出的语音识别模型
-2024-07-19 15:08:09,007 INFO [sense_voice.py:83] Decoder audio takes 0.20529699325561523 seconds
-2024-07-19 15:08:09,007 INFO [sense_voice.py:84] The RTF is 0.0367915758522608.
+2024-07-19 07:22:40,643 INFO [sense_voice_ort_session.py:130] Loading model from /home/runner/work/SenseVoice-python/SenseVoice-python/sensevoice/resource/embedding.npy
+2024-07-19 07:22:40,647 INFO [sense_voice_ort_session.py:133] Loading model /home/runner/work/SenseVoice-python/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx
+2024-07-19 07:22:42,755 INFO [sense_voice_ort_session.py:140] Loading /home/runner/work/SenseVoice-python/SenseVoice-python/sensevoice/resource/sense-voice-encoder.onnx takes 2.11 seconds
+2024-07-19 07:22:42,786 INFO [sense_voice.py:76] Audio sensevoice/resource/asr_example_zh.wav is 5.58 seconds
+2024-07-19 07:22:43,102 INFO [sense_voice.py:81] [0.61s - 5.53s] <|zh|><|NEUTRAL|><|Speech|><|woitn|>欢迎大家来体验达摩院推出的语音识别模型
+2024-07-19 07:22:43,102 INFO [sense_voice.py:83] Decoder audio takes 0.31638407707214355 seconds
+2024-07-19 07:22:43,103 INFO [sense_voice.py:84] The RTF is 0.05669965538927304.
 ```

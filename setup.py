@@ -11,7 +11,7 @@ from pathlib import Path
 from setuptools import find_namespace_packages, setup
 
 dirname = Path(os.path.dirname(__file__))
-version = "v1.0.0"
+version = "v1.1.0"
 
 requirements = {
     "install": [
