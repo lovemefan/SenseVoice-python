@@ -77,25 +77,28 @@ def main():
     waveform, _sample_rate = sf.read(
         args.audio_file,
         dtype="float32",
+        always_2d=True
     )
 
-    logging.info(f"Audio {args.audio_file} is {len(waveform) / _sample_rate} seconds")
+    logging.info(f"Audio {args.audio_file} is {len(waveform) / _sample_rate} seconds, {waveform.shape[1]} channel")
     # load vad model
     start = time.time()
     vad = FSMNVad(download_model_path)
-    segments = vad.segments_offline(args.audio_file)
-    results = ""
-    for part in segments:
-        audio_feats = front.get_features(waveform[part[0] * 16 : part[1] * 16])
-        asr_result = model(
-            audio_feats[None, ...],
-            language=languages[args.language],
-            use_itn=args.use_itn,
-        )
-        logging.info(f"[{part[0] / 1000}s - {part[1] / 1000}s] {asr_result}")
-        decoding_time = time.time() - start
+    for channel_id, channel_data in enumerate(waveform.T):
+        segments = vad.segments_offline(channel_data)
+        results = ""
+        for part in segments:
+            audio_feats = front.get_features(channel_data[part[0] * 16 : part[1] * 16])
+            asr_result = model(
+                audio_feats[None, ...],
+                language=languages[args.language],
+                use_itn=args.use_itn,
+            )
+            logging.info(f"[Channel {channel_id}] [{part[0] / 1000}s - {part[1] / 1000}s] {asr_result}")
+        vad.vad.all_reset_detection()
+    decoding_time = time.time() - start
     logging.info(f"Decoder audio takes {decoding_time} seconds")
-    logging.info(f"The RTF is {decoding_time/(len(waveform) / _sample_rate)}.")
+    logging.info(f"The RTF is {decoding_time/(waveform.shape[1] * len(waveform) / _sample_rate)}.")
 
 
 if __name__ == "__main__":
